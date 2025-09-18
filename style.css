@@ -26,14 +26,14 @@ header nav a {
 }
 
 .carousel {
-  max-width: 10%;
+  max-width: 50%;
   overflow: hidden;
   position: relative;
   height: 30px;
 }
 
 .carousel img {
-  width: 10%;
+  width: 50%;
   height: 30px;
   object-fit: cover;
   display: none;

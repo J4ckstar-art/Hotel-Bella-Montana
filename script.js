@@ -20,9 +20,25 @@ prevButton.addEventListener('click', () => {
   updateCarousel();
 });
 
-// Auto play cada 5 segundos
+// Auto play
 setInterval(() => {
   currentIndex = (currentIndex + 1) % slides.length;
   updateCarousel();
 }, 5000);
+
+// Animaciones al hacer scroll
+const animatedElements = document.querySelectorAll('.animate');
+
+function handleScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+  animatedElements.forEach(el => {
+    const boxTop = el.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScroll);
+handleScroll();
 

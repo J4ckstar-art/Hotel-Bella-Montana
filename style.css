@@ -29,12 +29,12 @@ header nav a {
   max-width: 100%;
   overflow: hidden;
   position: center;
-  height: 1000px;
+  height: 800px;
 }
 
 .carousel img {
   width: 100%;
-  height: 1000px;
+  height: 800px;
   object-fit: cover;
   display: none;
 }

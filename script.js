@@ -1,18 +1,28 @@
-let current = 0;
-const images = document.querySelectorAll('.carousel img');
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const nextButton = document.querySelector('.next');
+const prevButton = document.querySelector('.prev');
 
-function showSlide(index) {
-  images.forEach((img, i) => {
-    img.classList.toggle('active', i === index);
-  });
+let currentIndex = 0;
+
+function updateCarousel() {
+  const width = slides[0].getBoundingClientRect().width;
+  track.style.transform = `translateX(-${currentIndex * width}px)`;
 }
 
-function nextSlide() {
-  current = (current + 1) % images.length;
-  showSlide(current);
-}
+nextButton.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel();
+});
 
-setInterval(nextSlide, 3000); // cambia cada 3 segundos
+prevButton.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateCarousel();
+});
 
-// Mostrar la primera imagen al cargar
-showSlide(current);
+// Auto play cada 5 segundos
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel();
+}, 5000);
+
